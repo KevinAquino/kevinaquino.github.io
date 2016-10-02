@@ -105,6 +105,15 @@ h2 {
     background-color: #339933;
 }
 
+
+#nav {
+    float: right;
+    max-width: 250px;
+    min-height: 100px;
+    margin: 0;
+    padding: 1em;
+}
+
 #header {
     margin: 0 auto; /* setting top and bottom margin to 0 and right and left margin to 200px */
     /*background-color: #E4E4E3; */
