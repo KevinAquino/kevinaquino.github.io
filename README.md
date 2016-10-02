@@ -1,2 +1,6 @@
 # kevinaquino.github.io
-My personal website. Feel free to grab any parts of the css and html code!
+My personal website.
+
+Feel free to grab any parts of the css and html code!
+
+Kevin Aquino.
