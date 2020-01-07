@@ -9,6 +9,8 @@ body {
     color: black;
     background-color: #E6EAEF;
     /*background-image: url(http://whatsonmyblackboard.files.wordpress.com/2013/03/momentum-exhibition12.jpg);*/
+    background-image: url(hbm_2019.png);
+    background-size: 70% ;    
     background-repeat: repeat-x;
     margin: 0 auto;
 }
