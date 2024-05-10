@@ -4,6 +4,8 @@
 <head>
     <title>Kevin Matthews Aquino</title>
     <link rel="stylesheet" href="websiteStyle.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 </head>
 
 <body>
@@ -54,7 +56,7 @@
             <img src="model.jpg" width=500px align=center>
         </a>
         </p>
-
+        <model-viewer src="eg.glb" ar ar-scale="fixed" camera-controls touch-action="pan-y" alt="A 3D model of a brain" shadow-intensity="2" max-camera-orbit="auto 90deg auto" ios-src="eg.usdz" xr-environment></model-viewer>
 
     </p>
     </div>
