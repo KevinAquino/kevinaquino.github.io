@@ -1244,8 +1244,10 @@
   ],
   "scenes": [
     {
-      "name": "help",
+      "name": "Scene",
       "nodes": [
+        2,
+        1,
         0
       ]
     }
