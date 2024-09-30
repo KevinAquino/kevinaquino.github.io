@@ -133,17 +133,11 @@
 
 					const object = new THREE.Mesh( geometry, material );
 
-					// object.position.x = Math.random() * 4 - 2;
-					// object.position.y = Math.random() * 2;
-					// object.position.z = Math.random() * 4 - 2;
-
-					// object.rotation.x = Math.random() * 2 * Math.PI;
-					// object.rotation.y = Math.random() * 2 * Math.PI;
-					// object.rotation.z = Math.random() * 2 * Math.PI;
 
 					object.position.x = 0;
 					object.position.y = 1.5;
 					object.position.z = 1;
+
 
 					object.rotation.x = 1.5*Math.PI;
 					object.rotation.y = 0;
@@ -156,16 +150,36 @@
 
 					group.add( object );
 
-					// const mesh = new THREE.Mesh( geometry );
+				} );
 
-					// mesh.position.set( 0, - 0.37, - 0.6 );
-					// mesh.rotation.set( - Math.PI / 2, 0, 0 );
-					// mesh.scale.set( 0.001, 0.001, 0.001 );
+				loader2.load( 'model.stl', function ( geometry ) {
 
-					// mesh.castShadow = true;
-					// mesh.receiveShadow = true;
+					const material = new THREE.MeshStandardMaterial( {
+						color: 1.5* 0xffffff,						
+						roughness: 0.7,
+						metalness: 0.5,
+						transparent: true,
+						opacity: 0.2
+					} );
 
-					// group.add( mesh );
+					const object = new THREE.Mesh( geometry, material );
+
+
+					object.position.x = -1;
+					object.position.y = 1.5;
+					object.position.z = 1;
+
+
+					object.rotation.x = 1.5*Math.PI;
+					object.rotation.y = 0;
+					object.rotation.z = 0*Math.PI;
+
+					object.scale.setScalar( 0.001);
+
+					object.castShadow = true;
+					object.receiveShadow = true;
+
+					group.add( object );
 
 				} );
 
@@ -246,7 +260,8 @@
 
 					const object = intersection.object;
 					object.material.emissive.b = 1;
-					controller.attach( object );
+					// controller.attach( object );
+					controller.attach( group );
 
 					controller.userData.selected = object;
 
