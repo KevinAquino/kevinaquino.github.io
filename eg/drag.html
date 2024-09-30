@@ -279,8 +279,13 @@
 
 					const object = controller.userData.selected;
 					object.material.emissive.b = 0;
-					group.attach( object );
-					controller.remove( group )
+					
+
+					const parent = object.parent;
+
+					group.attach( parent.children );
+
+					// controller.remove( group )
 
 					controller.userData.selected = undefined;
 
