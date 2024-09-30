@@ -1,0 +1,656 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"T2_",
+				"T2_ANALYSIS_ID"
+			],
+			[
+				"FLAIR",
+				"FLAIR_ANALSYIS_ID"
+			],
+			[
+				"IN",
+				"INITIAL_WAIT_T2_TIME"
+			],
+			[
+				"com",
+				"completed_T2"
+			],
+			[
+				"extr",
+				"extracted_file"
+			],
+			[
+				"fi",
+				"file_name"
+			],
+			[
+				"fil",
+				"file_name"
+			],
+			[
+				"file",
+				"file_name"
+			],
+			[
+				"T1",
+				"T1_id"
+			],
+			[
+				"scan",
+				"this_scan_class"
+			],
+			[
+				"ue",
+				"use_combo_model"
+			],
+			[
+				"found_",
+				"found_flair"
+			],
+			[
+				"fou",
+				"found_t2"
+			],
+			[
+				"co",
+				"completed_FLAIR"
+			],
+			[
+				"out",
+				"out_files"
+			],
+			[
+				"gra",
+				"grab_nont1_files"
+			],
+			[
+				"t1",
+				"t1_ids"
+			],
+			[
+				"t1_",
+				"t1_files"
+			],
+			[
+				"lab",
+				"label_file"
+			],
+			[
+				"use",
+				"uset2"
+			],
+			[
+				"cop",
+				"copy_files"
+			],
+			[
+				"new",
+				"new_csf"
+			],
+			[
+				"ca",
+				"ca_value"
+			],
+			[
+				"alvi",
+				"alvi_value"
+			],
+			[
+				"ver",
+				"vertex_list"
+			],
+			[
+				"dia",
+				"diameter2"
+			],
+			[
+				"eva",
+				"evans_annot"
+			],
+			[
+				"labe",
+				"label_file"
+			],
+			[
+				"surf",
+				"surface2"
+			],
+			[
+				"fn",
+				"fn_t1"
+			],
+			[
+				"ind",
+				"indexes"
+			],
+			[
+				"end",
+				"end_y"
+			],
+			[
+				"start",
+				"start_y"
+			],
+			[
+				"diam",
+				"diameter2"
+			],
+			[
+				"up",
+				"upper"
+			],
+			[
+				"wm",
+				"wm_counter"
+			],
+			[
+				"m",
+				"mean_nm"
+			],
+			[
+				"PREP",
+				"PREPROC_TOF_ANALYSIS_ID"
+			],
+			[
+				"pre",
+				"preproc_img"
+			],
+			[
+				"def",
+				"default_nib"
+			],
+			[
+				"f",
+				"fn_default"
+			],
+			[
+				"ou",
+				"output"
+			],
+			[
+				"output_fi",
+				"output_file_map"
+			],
+			[
+				"tof",
+				"tof_reg"
+			],
+			[
+				"fn_",
+				"fn_preproc"
+			],
+			[
+				"version_",
+				"version_pvs"
+			],
+			[
+				"version",
+				"version_wmh"
+			],
+			[
+				"str",
+				"struct_s"
+			],
+			[
+				"ori",
+				"original_version"
+			],
+			[
+				"dr_",
+				"df_rkl"
+			],
+			[
+				"df_",
+				"df_rkl"
+			],
+			[
+				"st",
+				"struct_s"
+			],
+			[
+				"rec",
+				"reconciled_dict"
+			],
+			[
+				"wmh",
+				"wmh_list_short"
+			],
+			[
+				"la",
+				"label_preproc"
+			],
+			[
+				"Ce",
+				"Cerebellum"
+			],
+			[
+				"Later",
+				"Lateral"
+			],
+			[
+				"mod",
+				"modality"
+			],
+			[
+				"cmap",
+				"cmap_blue"
+			],
+			[
+				"stru",
+				"structure_mapping"
+			],
+			[
+				"v",
+				"ventricle"
+			],
+			[
+				"surf_",
+				"surf_dict"
+			],
+			[
+				"WM",
+				"WMH_ANALYSIS_ID"
+			],
+			[
+				"default",
+				"default_color"
+			],
+			[
+				"sur",
+				"surfaceList"
+			],
+			[
+				"PVS_",
+				"PVS_EDIT_ID"
+			],
+			[
+				"data",
+				"data_use"
+			],
+			[
+				"a",
+				"a_all"
+			],
+			[
+				"d",
+				"denom"
+			],
+			[
+				"img",
+				"img_seg"
+			],
+			[
+				"fli",
+				"file_list"
+			],
+			[
+				"M",
+				"MODE"
+			],
+			[
+				"seg",
+				"seg_select"
+			],
+			[
+				"save",
+				"save_folder"
+			],
+			[
+				"du",
+				"dummy"
+			],
+			[
+				"sav",
+				"save_file"
+			],
+			[
+				"get",
+				"get_fdata"
+			],
+			[
+				"get_",
+				"get_fdata"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/aquino/AnalysisRunner"
+	],
+	"file_history":
+	[
+		"/Users/aquino/NPH/analysis-combined-model/input/node.json",
+		"/Users/aquino/NPH/display-processing-NPH/analysis.py",
+		"/Users/aquino/NPH/analysis-NPH/analysis.py",
+		"/Users/aquino/NPH/analysis-retrieve-model-outputs/input/node.json",
+		"/Users/aquino/NPH/analysis-retrieve-model-outputs/analysis.py",
+		"/Users/aquino/NPH/analysis-retrieve-model-outputs/Dockerfile",
+		"/Users/aquino/NPH/analysis-combined-model/Dockerfile",
+		"/Users/aquino/NPH/analysis-model-prep-from-nathan/analysis.py",
+		"/Users/aquino/NPH/analysis-combined-model/masking.py",
+		"/Users/aquino/NPH/analysis-combined-model/analysis.py",
+		"/Users/aquino/NPH/analysis-retrieve-model-outputs/build.sh",
+		"/Users/aquino/NPH/analysis-combined-model/testModel.sh",
+		"/Users/aquino/NPH/analysis-combined-model/build.sh",
+		"/Users/aquino/NPH/testCases.sh",
+		"/Users/aquino/NPH/download_cases_Model.py",
+		"/Users/aquino/NPH/analysis-combined-model/client.py",
+		"/Users/aquino/NPH/analysis-waiting-combined-model/analysis.py",
+		"/Users/aquino/NPH/display-processing-NPH/build.sh",
+		"/Users/aquino/NPH/analysis-NPH/input/node.json",
+		"/Users/aquino/NPH/display-processing-NPH/Dockerfile",
+		"/Users/aquino/NPH/analysis-NPH/Dockerfile",
+		"/Users/aquino/NPH/display-processing-NPH/input/node.json",
+		"/Users/aquino/NPH/analysis-model-prep/Dockerfile_from_nathan",
+		"/Users/aquino/NPH/analysis-model-prep/Dockerfile",
+		"/Users/aquino/NPH/analysis-model-prep-from-nathan/build.sh",
+		"/Users/aquino/NPH/analysis-model-prep-from-nathan/Dockerfile",
+		"/Users/aquino/NPH/analysis-model-prep/build.sh",
+		"/Users/aquino/NPH/analysis-model-prep/output/analysis.py",
+		"/Users/aquino/NPH/analysis-model-prep/analysis.py",
+		"/Users/aquino/NPH/analysis-model-prep/input/node.json",
+		"/Users/aquino/NPH/download_cases.py",
+		"/Users/aquino/NPH/Dockerfile",
+		"/Users/aquino/NPH/evans_index.py",
+		"/Users/aquino/NPH/build.sh",
+		"/Users/aquino/NPH/NPH_images.py",
+		"/Users/aquino/NPH/alvi.py",
+		"/Users/aquino/NPH/analysis.py",
+		"/Users/aquino/Downloads/sub-8565_ses-1710337314PQTVZY_acq-1_T1w_NPH_files/evans_corrected.annot",
+		"/Users/aquino/NPH/input/node.json",
+		"/Users/aquino/brainkey-tests/NPH_tests/node.json",
+		"/Users/aquino/NPH/NPH",
+		"/Users/aquino/brainkey-tests/NPH_tests/example.annot",
+		"/Users/aquino/brainkey-post-processing/qc_code/qc_training_report_html_only.py",
+		"/Users/aquino/brainkey-tests/NPH_tests/mni_alignment.py",
+		"/Users/aquino/brainkey-tests/NPH_tests/callosal_Test.annot",
+		"/Users/aquino/brainkey-tests/NPH_tests/decimate_surface_new.py",
+		"/Users/aquino/brainkey-tests/NPH_tests/make_surface.py",
+		"/Users/aquino/brainkey-post-processing/qc_code/qc_training_report.py",
+		"/Users/aquino/brainkey-tests/NPH_tests/analysis.py",
+		"/Users/aquino/brainkey-tests/NPH_tests/callosal_angle.py",
+		"/Users/aquino/brainkey-tests/NPH_tests/alvi.py",
+		"/Users/aquino/brainkey-tests/NPH_tests/ignore.annot",
+		"/Users/aquino/brainkey-tests/NPH_tests/test_ARRATHI/208609_evans.annot",
+		"/Users/aquino/brainkey-tests/NPH_tests/FL_sub_7249/tt.annot",
+		"/Users/aquino/brainkey-tests/NPH_tests/FL_sub_7249/evans2.annot",
+		"/Users/aquino/brainkey-tests/T2_error/input/node.json",
+		"/Users/aquino/brainkey-tests/NPH_tests/evans_index.py",
+		"/Users/aquino/brainkey-tests/NPH_tests/tester_call.annot",
+		"/Users/aquino/brainkey-tests/NPH_tests/alvi.annot",
+		"/Users/aquino/brainkey-tests/NPH_tests/evans_annot.annot",
+		"/Users/aquino/brainkey-api/analysis-runner/analysis-TOF/input/node.json",
+		"/Users/aquino/brainkey-api/analysis-runner/keylayer-reporting/curve_generation.py",
+		"/Users/aquino/Downloads/204923-tester.annot",
+		"/Users/aquino/brainkey-api/analysis-runner/post-processing-3D-snapshots/produce_snapshots.py",
+		"/Users/aquino/brainkey-api/analysis-runner/display-processing-nonT1/wmh_scoring.py",
+		"/Users/aquino/brainkey-api/analysis-runner/simple-to-lobar-202211/build.sh",
+		"/Users/aquino/brainkey-api/analysis-runner/simple-to-lobar-202211/lobar_maps.py",
+		"/Users/aquino/brainkey-api/analysis-runner/simple-to-lobar-202211/simple_to_lobar.py",
+		"/Users/aquino/brainkey-api/analysis-runner/simple-to-lobar-202211/inferior_lateral_ventricles.py",
+		"/Users/aquino/brainkey-api/analysis-runner/display-processing-nonT1/build.sh",
+		"/Users/aquino/brainkey-api/analysis-runner/post-processing-screenshots/analysis.py",
+		"/Users/aquino/brainkey-api/analysis-runner/display-processing-nonT1/make_surfaces.py",
+		"/Users/aquino/brainkey-api/analysis-runner/display-processing-nonT1/tester/make_surfaces.py",
+		"/Users/aquino/brainkey-api/analysis-runner/surface/analysis.py",
+		"/Users/aquino/brainkey-api/analysis-runner/common/surface/make_surface.py",
+		"/Users/aquino/brainkey-api/analysis-runner/display-processing-nonT1/normative_wmh.py",
+		"/Users/aquino/brainkey-api/analysis-runner/keylayer-reporting/normative_curves.py",
+		"/Users/aquino/brainkey-api/analysis-runner/brainage-normative-based/input/node.json",
+		"/Users/aquino/brainkey-api/analysis-runner/brainage-normative-based/analysis.py",
+		"/Users/aquino/brainkey-api/analysis-runner/brainage-normative-based/build.sh",
+		"/Users/aquino/brainkey-api/analysis-runner/brainage-normative-based/Dockerfile",
+		"/Users/aquino/brainkey-tests/simple_to_lobar_tests/input/node.json",
+		"/Users/aquino/brainkey-api/analysis-runner/brainage-normative-based/normative_brainage.py",
+		"/Users/aquino/brainkey-api/analysis-runner/keylayer-reporting/build.sh",
+		"/Users/aquino/brainkey-api/analysis-runner/display-processing-nonT1/analysis.py",
+		"/Users/aquino/brainkey-api/analysis-runner/preproc-nonT1/Dockerfile",
+		"/Users/aquino/brainkey-api/analysis-runner/preproc-nonT1/preproc_nonT1.py",
+		"/Users/aquino/brainkey-api/analysis-runner/post-processing-3D-snapshots/analysis.py",
+		"/Users/aquino/brainkey-api/kubernetes/azure/analysis-runner-event-config.yaml",
+		"/Users/aquino/brainkey-api/analysis-runner/analysis-TOF/vessel_extraction.py",
+		"/Users/aquino/brainkey-api/analysis-runner/analysis-SWI/build.sh",
+		"/Users/aquino/brainkey-api/analysis-runner/analysis-TOF/build.sh",
+		"/Users/aquino/brainkey-api/analysis-runner/analysis-TOF/Dockerfile",
+		"/Users/aquino/brainkey-api/analysis-runner/analysis-TOF/analysis.py",
+		"/Users/aquino/brainkey-api/analysis-runner/post-processing-screenshots/screenshots.py",
+		"/Users/aquino/brainkey-api/analysis-runner/post-processing-screenshots/build.sh",
+		"/Users/aquino/brainkey-api/analysis-runner/post-processing-3D-snapshots/build.sh",
+		"/Users/aquino/brainkey-api/analysis-runner/keylayer-reporting/Dockerfile",
+		"/Users/aquino/brainkey-api/analysis-runner/brainageR-201911/build.sh",
+		"/Users/aquino/brainkey-api/analysis-runner/keylayer-reporting/keylayer_reporting.py",
+		"/Users/aquino/brainkey-api/analysis-runner/brainageR-201911/analysis.py",
+		"/Users/aquino/brainkey-api/analysis-runner/brainageR-201911/input/node.json",
+		"/Users/aquino/brainkey-tests/analysis-SWI-tests/input/node.json",
+		"/Users/aquino/brainkey-api/analysis-runner/analysis-SWI/Dockerfile",
+		"/Users/aquino/brainkey-api/analysis-runner/preproc-nonT1/analysis.py",
+		"/Users/aquino/brainkey-api/analysis-runner/preproc-nonT1/build.sh",
+		"/Users/aquino/brainkey-api/analysis-runner/analysis-SWI/analysis.py",
+		"/Users/aquino/brainkey-tests/preproc-nonT1-tests/input/node.json",
+		"/Users/aquino/brainkey-tests/preproc-nonT1-tests/input_swi/node.json",
+		"/Users/aquino/brainkey-api/kubernetes/azure/analysis-runner-deployment.yaml",
+		"/Users/aquino/brainkey-tests/testsForDPNT1_WMH/output/analysis.py",
+		"/Users/aquino/brainkey-api/analysis-runner/display-processing-nonT1/Dockerfile",
+		"/Users/aquino/brainkey-api/analysis-runner/analysis-TOF/make_surfaces.py",
+		"/Users/aquino/brainkey-api/analysis-runner/keylayer-reporting/input/node.json",
+		"/Users/aquino/brainkey-api/analysis-runner/keylayer-reporting/generate_statistics.py",
+		"/Users/aquino/brainkey-api/analysis-runner/preproc-t2-flair/analysis.py",
+		"/Users/aquino/brainkey-tests/testsForDPNT1_WMH/input/node.json",
+		"/Users/aquino/brainkey-api/analysis-runner/post-processing-3D-snapshots/produce_snapshots_nonT1.py",
+		"/Users/aquino/brainkey-api/analysis-runner/post-processing-screenshots/input/node.json",
+		"/Users/aquino/brainkey-tests/tests-3D-snapshots/output/result.json",
+		"/Users/aquino/brainkey-api/analysis-runner/post-processing-3D-snapshots/input/node.json",
+		"/Users/aquino/brainkey-api/analysis-runner/post-processing-3D-snapshots/Dockerfile",
+		"/Users/aquino/Desktop/index.html",
+		"/Users/aquino/brainkey-tests/surfaceTests/output/test.json",
+		"/Users/aquino/brainkey-api/analysis-runner/surface/build.sh",
+		"/Users/aquino/brainkey-api/kubernetes/aws/analysis-runner-event-config.yaml",
+		"/Users/aquino/brainkey-api/analysis-runner/preproc-t2-flair/build.sh",
+		"/Users/aquino/Papaya/release/current/standard/papaya.js"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 98.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			","
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 44.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "AnalysisRunner.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"painted",
+				"analysis-runner/surface/painted_surface.py"
+			],
+			[
+				"make",
+				"analysis-runner/cortical-thickness-202003/make_surface.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 394.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
