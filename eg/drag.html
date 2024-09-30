@@ -124,9 +124,11 @@
 				loader2.load( 'model.stl', function ( geometry ) {
 
 					const material = new THREE.MeshStandardMaterial( {
-						color: Math.random() * 0xffffff,
+						color: 0.5* 0xffffff,						
 						roughness: 0.7,
-						metalness: 0.0
+						metalness: 0.5,
+						transparent: true,
+						opacity: 0.5
 					} );
 
 					const object = new THREE.Mesh( geometry, material );
