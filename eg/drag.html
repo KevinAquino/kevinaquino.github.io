@@ -263,7 +263,8 @@
 					// controller.attach( object );
 					controller.attach( group );
 
-					controller.userData.selected = object;
+					// controller.userData.selected = object;
+					controller.userData.selected = group;
 
 				}
 
@@ -278,8 +279,8 @@
 				if ( controller.userData.selected !== undefined ) {
 
 					const object = controller.userData.selected;
-					object.material.emissive.b = 0;
-					group.attach( object );
+					// object.material.emissive.b = 0;
+					group.attach( object.children );
 
 					controller.userData.selected = undefined;
 
