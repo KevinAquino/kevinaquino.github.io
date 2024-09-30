@@ -261,7 +261,8 @@
 					const object = intersection.object;
 					object.material.emissive.b = 1;
 					// controller.attach( object );
-					controller.attach( group );
+					const parent = object.parent;
+					controller.attach( parent );
 
 					controller.userData.selected = object;
 
@@ -285,7 +286,7 @@
 
 					group.attach( parent.children );
 
-					// controller.remove( group )
+					controller.remove( parent )
 
 					controller.userData.selected = undefined;
 
