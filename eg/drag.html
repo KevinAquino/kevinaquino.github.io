@@ -284,9 +284,10 @@
 
 					const parent = object.parent;
 
+					controller.remove( parent.children )
 					group.attach( parent.children );
 
-					controller.remove( parent )
+					
 
 					controller.userData.selected = undefined;
 
