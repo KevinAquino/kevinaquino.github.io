@@ -262,7 +262,7 @@
 					object.material.emissive.b = 1;
 					// controller.attach( object );
 					const parent = object.parent;
-					controller.attach( parent );
+					controller.attach( parent.children );
 
 					controller.userData.selected = object;
 
