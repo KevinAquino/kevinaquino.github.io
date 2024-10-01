@@ -294,7 +294,8 @@
 					// controller.remove( parent.children )
 					// group.attach( parent.children );
 					parent.children.forEach((child) => {
-						group.attach( child );
+						controller.remove( child );
+						group.attach(child)
 					  // console.log(child); // Perform any operation with the child
 					});
 
@@ -334,7 +335,7 @@
 					const intersection = intersections[ 0 ];
 
 					const object = intersection.object;
-					object.material.emissive.r = 0.2;
+					// object.material.emissive.r = 0.2;
 					intersected.push( object );
 
 					line.scale.z = intersection.distance;
