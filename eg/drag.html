@@ -262,7 +262,14 @@
 					object.material.emissive.b = 1;
 					// controller.attach( object );
 					const parent = object.parent;
-					controller.attach( parent.children );
+
+
+					parent.children.forEach((child) => {
+						controller.attach( child );
+					  // console.log(child); // Perform any operation with the child
+					});
+
+					// controller.attach( parent.children );
 
 					controller.userData.selected = object;
 
@@ -284,8 +291,12 @@
 
 					const parent = object.parent;
 
-					controller.remove( parent.children )
-					group.attach( parent.children );
+					// controller.remove( parent.children )
+					// group.attach( parent.children );
+					parent.children.forEach((child) => {
+						group.attach( child );
+					  // console.log(child); // Perform any operation with the child
+					});
 
 					
 
