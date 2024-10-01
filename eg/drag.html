@@ -264,12 +264,12 @@
 					const parent = object.parent;
 
 
-					parent.children.forEach((child) => {
-						controller.attach( child );
-					  // console.log(child); // Perform any operation with the child
-					});
+					// parent.children.forEach((child) => {
+					// 	controller.attach( child );
+					//   // console.log(child); // Perform any operation with the child
+					// });
 
-					// controller.attach( parent.children );
+					controller.attach( parent );
 
 					controller.userData.selected = object;
 
@@ -291,14 +291,15 @@
 
 					const parent = object.parent;
 
-					// controller.remove( parent.children )
-					// group.attach( parent.children );
-					parent.children.forEach((child) => {
-						controller.remove( child );
-						group.attach(child)
-					  // console.log(child); // Perform any operation with the child
-					});
-
+					// // controller.remove( parent.children )
+					// // group.attach( parent.children );
+					// parent.children.forEach((child) => {
+					// 	controller.remove( child );
+					// 	group.attach(child)
+					//   // console.log(child); // Perform any operation with the child
+					// });
+					controller.remove( parent )
+					scene.add(parent)
 					
 
 					controller.userData.selected = undefined;
@@ -335,7 +336,7 @@
 					const intersection = intersections[ 0 ];
 
 					const object = intersection.object;
-					// object.material.emissive.r = 0.2;
+					object.material.emissive.r = 0.2;
 					intersected.push( object );
 
 					line.scale.z = intersection.distance;
