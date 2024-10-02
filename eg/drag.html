@@ -269,9 +269,12 @@
 					//   // console.log(child); // Perform any operation with the child
 					// });
 
-					controller.attach( parent );
+					// controller.attach( parent );
+					// controller.attach( object );
+					controller.attach( group );
 
-					controller.userData.selected = object;
+					// controller.userData.selected = object;
+					controller.userData.selected = group;
 
 				}
 
@@ -285,11 +288,13 @@
 
 				if ( controller.userData.selected !== undefined ) {
 
-					const object = controller.userData.selected;
-					object.material.emissive.b = 0;
+					// const object = controller.userData.selected;
+					// object.material.emissive.b = 0;
 					
+					const group = controller.userData.selected;
+					scene.attach( group );
 
-					const parent = object.parent;
+					// const parent = object.parent;
 
 					// // controller.remove( parent.children )
 					// // group.attach( parent.children );
@@ -298,9 +303,10 @@
 					// 	group.attach(child)
 					//   // console.log(child); // Perform any operation with the child
 					// });
-					scene.add(parent)
-					// controller.remove( parent )
 					// scene.add(parent)
+					// group.attach(object)
+					// controller.remove( parent )
+					// scene.attach(group)
 					
 
 					controller.userData.selected = undefined;
