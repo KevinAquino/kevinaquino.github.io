@@ -154,7 +154,7 @@
 
 				const surfs = ["LV1.stl","LV2.stl","TV.stl","FV.stl","IFL1.stl","IFL2.stl","COW.stl"]
 
-				for (let i = 0; i < cars.surfs; i++) {
+				for (let i = 0; i < surfs.length; i++) {
 					loader2.load( surfs[i], function ( geometry ) {
 
 					const material = new THREE.MeshStandardMaterial( {
