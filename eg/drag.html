@@ -152,7 +152,7 @@
 
 				} );
 
-				const surfs = ["LV1.stl","LV2.stl","TV.stl","FV.stl","IFL1.stl","IFL2.stl","COW.stl"]
+				const surfs = ["LV1.stl","LV2.stl","TV.stl","FV.stl","IFL1.stl","IFL2.stl"]
 
 				for (let i = 0; i < surfs.length; i++) {
 					loader2.load( surfs[i], function ( geometry ) {
@@ -163,6 +163,38 @@
 						metalness: 0.5,
 						transparent: false,
 						opacity: 1
+					} );
+
+					const object = new THREE.Mesh( geometry, material );
+
+
+					object.position.x = 0;
+					object.position.y = 1.5;
+					object.position.z = 1;
+
+
+					object.rotation.x = 1.5*Math.PI;
+					object.rotation.y = 0;
+					object.rotation.z = 0*Math.PI;
+
+					object.scale.setScalar( 0.001);
+
+					object.castShadow = true;
+					object.receiveShadow = true;
+
+					group.add( object );
+
+				} );
+
+
+				loader2.load( 'COW.stl', function ( geometry ) {
+
+					const material = new THREE.MeshStandardMaterial( {
+						color: 0xf00c0c  ,						
+						roughness: 0.7,
+						metalness: 0.5,
+						transparent: false,
+						opacity: 0.2
 					} );
 
 					const object = new THREE.Mesh( geometry, material );
