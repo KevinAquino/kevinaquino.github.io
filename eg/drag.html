@@ -88,38 +88,12 @@
 					new THREE.TorusGeometry( 0.2, 0.04, 64, 32 )
 				];
 
-				// for ( let i = 0; i < 50; i ++ ) {
 
-				// 	const geometry = geometries[ Math.floor( Math.random() * geometries.length ) ];
-				// 	const material = new THREE.MeshStandardMaterial( {
-				// 		color: Math.random() * 0xffffff,
-				// 		roughness: 0.7,
-				// 		metalness: 0.0
-				// 	} );
-
-				// 	const object = new THREE.Mesh( geometry, material );
-
-				// 	object.position.x = Math.random() * 4 - 2;
-				// 	object.position.y = Math.random() * 2;
-				// 	object.position.z = Math.random() * 4 - 2;
-
-				// 	object.rotation.x = Math.random() * 2 * Math.PI;
-				// 	object.rotation.y = Math.random() * 2 * Math.PI;
-				// 	object.rotation.z = Math.random() * 2 * Math.PI;
-
-				// 	object.scale.setScalar( Math.random() + 0.5 );
-
-				// 	object.castShadow = true;
-				// 	object.receiveShadow = true;
-
-				// 	group.add( object );
-
-				// }
 
 				const loader2 = new STLLoader()
 					.setPath('models/usdz/');
 
-
+				const scaleOfBrain=0.05
 
 				loader2.load( 'model.stl', function ( geometry ) {
 
@@ -143,7 +117,7 @@
 					object.rotation.y = 0;
 					object.rotation.z = 0*Math.PI;
 
-					object.scale.setScalar( 0.01);
+					object.scale.setScalar( scaleOfBrain );
 
 					object.castShadow = true;
 					object.receiveShadow = true;
@@ -177,7 +151,7 @@
 					object.rotation.y = 0;
 					object.rotation.z = 0*Math.PI;
 
-					object.scale.setScalar( 0.01);
+					object.scale.setScalar( scaleOfBrain );
 
 					object.castShadow = true;
 					object.receiveShadow = true;
@@ -209,7 +183,7 @@
 					object.rotation.y = 0;
 					object.rotation.z = 0*Math.PI;
 
-					object.scale.setScalar( 0.01);
+					object.scale.setScalar( scaleOfBrain );
 
 					object.castShadow = true;
 					object.receiveShadow = true;
@@ -380,7 +354,7 @@
 					const intersection = intersections[ 0 ];
 
 					const object = intersection.object;
-					object.material.emissive.r = 0.2;
+					// object.material.emissive.r = 0.2;
 					intersected.push( object );
 
 					line.scale.z = intersection.distance;
