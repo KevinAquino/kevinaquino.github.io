@@ -280,7 +280,7 @@
 
 					const intersection = intersections[ 0 ];
 
-
+					const object = intersection.object;
 			        if (intersectedObject === buttonMesh) {
 		            	// Change the button's color
 		            	buttonMesh.material.color.set(0x0000ff); // New button color (e.g., blue)
@@ -289,7 +289,7 @@
 			            object.material.color.set(0xffff00); // New target color (e.g., yellow)
 			        } else {
 
-						const object = intersection.object;
+						
 						object.material.emissive.b = 1;
 						// controller.attach( object );
 						const parent = object.parent;
