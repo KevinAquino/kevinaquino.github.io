@@ -281,13 +281,13 @@
 					const intersection = intersections[ 0 ];
 
 					const object = intersection.object;
-			        if (intersectedObject === buttonMesh) {
-		            	// Change the button's color
-		            	buttonMesh.material.color.set(0x0000ff); // New button color (e.g., blue)
+			        // if (intersectedObject === buttonMesh) {
+		            // 	// Change the button's color
+		            // 	buttonMesh.material.color.set(0x0000ff); // New button color (e.g., blue)
 
-			            // Change the target mesh's color
-			            object.material.color.set(0xffff00); // New target color (e.g., yellow)
-			        } else {
+			        //     // Change the target mesh's color
+			        //     object.material.color.set(0xffff00); // New target color (e.g., yellow)
+			        // } else {
 
 						
 						object.material.emissive.b = 1;
@@ -309,7 +309,7 @@
 						// controller.userData.selected = group;
 						controller.userData.selected = parent;
 
-			        }
+			        // }
 
 
 				}
@@ -357,7 +357,7 @@
 
 				raycaster.setFromXRController( controller );
 
-				return raycaster.intersectObjects( group.children, false );
+				return raycaster.intersectObjects( [group.children,buttonMesh], false );
 
 			}
 
