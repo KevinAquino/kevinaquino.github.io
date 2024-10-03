@@ -40,7 +40,6 @@
 			const intersected = [];
 
 			let controls, group;
-			let buttonMesh
 
 			init();
 
@@ -192,13 +191,6 @@
 					group.add( object );
 
 				} );
-
-				    // Create the button (e.g., a box)
-				    const buttonGeometry = new THREE.BoxGeometry(0.3, 0.1, 0.3);
-				    const buttonMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff00 }); // Initial button color
-				    buttonMesh = new THREE.Mesh(buttonGeometry, buttonMaterial);
-				    buttonMesh.position.set(0, 1, -1); // Adjust the position
-				    scene.add(buttonMesh);
 				  
 				}
 
@@ -273,44 +265,29 @@
 
 				const intersections = getIntersections( controller );
 
-				        // If the button mesh is pressed
-
-
 				if ( intersections.length > 0 ) {
 
 					const intersection = intersections[ 0 ];
 
 					const object = intersection.object;
-			        // if (intersectedObject === buttonMesh) {
-		            // 	// Change the button's color
-		            // 	buttonMesh.material.color.set(0x0000ff); // New button color (e.g., blue)
-
-			        //     // Change the target mesh's color
-			        //     object.material.color.set(0xffff00); // New target color (e.g., yellow)
-			        // } else {
-
-						
-						object.material.emissive.b = 1;
-						// controller.attach( object );
-						const parent = object.parent;
+					object.material.emissive.b = 1;
+					// controller.attach( object );
+					const parent = object.parent;
 
 
-						// parent.children.forEach((child) => {
-						// 	controller.attach( child );
-						//   // console.log(child); // Perform any operation with the child
-						// });
+					// parent.children.forEach((child) => {
+					// 	controller.attach( child );
+					//   // console.log(child); // Perform any operation with the child
+					// });
 
-						// controller.attach( parent );
-						// controller.attach( object );
-						// controller.attach( group );
-						controller.attach( parent );
+					// controller.attach( parent );
+					// controller.attach( object );
+					// controller.attach( group );
+					controller.attach( parent );
 
-						// controller.userData.selected = object;
-						// controller.userData.selected = group;
-						controller.userData.selected = parent;
-
-			        // }
-
+					// controller.userData.selected = object;
+					// controller.userData.selected = group;
+					controller.userData.selected = parent;
 
 				}
 
@@ -357,7 +334,7 @@
 
 				raycaster.setFromXRController( controller );
 
-				return raycaster.intersectObjects( [group.children,buttonMesh], false );
+				return raycaster.intersectObjects( group.children, false );
 
 			}
 
