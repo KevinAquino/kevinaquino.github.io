@@ -282,10 +282,12 @@
 
 					// controller.attach( parent );
 					// controller.attach( object );
-					controller.attach( group );
+					// controller.attach( group );
+					controller.attach( parent );
 
 					// controller.userData.selected = object;
-					controller.userData.selected = group;
+					// controller.userData.selected = group;
+					controller.userData.selected = parent;
 
 				}
 
@@ -302,8 +304,8 @@
 					// const object = controller.userData.selected;
 					// object.material.emissive.b = 0;
 					
-					const group = controller.userData.selected;
-					scene.attach( group );
+					const parent = controller.userData.selected;
+					scene.attach( parent );
 
 					// const parent = object.parent;
 
