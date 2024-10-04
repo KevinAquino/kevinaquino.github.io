@@ -39,7 +39,7 @@
 
 			const intersected = [];
 
-			let controls, group;
+			let controls, group, tof_group;
 			let buttonMesh, tofy;
 
 			init();
@@ -80,6 +80,9 @@
 
 				group = new THREE.Group();
 				scene.add( group );
+
+				tof_group = new THREE.Group()
+				scene.add(tof_group)
 
 				const geometries = [
 					new THREE.BoxGeometry( 0.2, 0.2, 0.2 ),
@@ -193,11 +196,14 @@
 
 					tofy.castShadow = true;
 					tofy.receiveShadow = true;
+					tofy.visible = true
+					tofy.needsUpdate = true;
 
-					group.add( tofy );
+					tof_group.add( tofy );
 
 				} );
-				  
+				// scene.add(tofy)
+
 				}
 
 				//
@@ -267,6 +273,7 @@
 			}
 
 			function onSelectStart( event ) {
+				// group.children[12].visible = false
 
 				const controller = event.target;
 
@@ -285,8 +292,14 @@
 			            buttonMesh.material.color.set(0x0000ff); // New button color (e.g., blue)
 			            // debugger;
 			            // Change the target mesh's color
-			            // group.children[12].material.color.set(0xffff00); // New target color (e.g., yellow)
-			            group.children[12].visible = false; // New target color (e.g., yellow)
+			            // group.children[12].material.color.set(0xffff00); // New target color (e.g., yellow)		
+			            tof_group.visible=false	           
+			            // debugger;
+			            // let mesh = group.children[12];
+			            // debugger;
+			            // buttonMesh.visible = false; // New target color (e.g., yellow)
+			            // group.children[12].needsUpdate = true;			            
+			            // controller.userData.selected=buttonMesh
 			        } else {
 						object.material.emissive.b = 1;
 						// controller.attach( object );
@@ -339,12 +352,13 @@
 					// scene.add(parent)
 					// group.attach(object)
 					// controller.remove( parent )
-					// scene.attach(group)
-					
+					// scene.attach(group)					
 
 					controller.userData.selected = undefined;
+					// group.visible = true
 
 				}
+				// group.children[12].material.color.set(0x000000);
 
 			}
 
@@ -355,6 +369,7 @@
 				raycaster.setFromXRController( controller );
 
 				const objectsToTest = group.children.concat(buttonMesh);
+				objectsToTest.concat(tof_group.children)
 		
 				return raycaster.intersectObjects( objectsToTest, false );
 
@@ -410,6 +425,7 @@
 
 				intersectObjects( controller1 );
 				intersectObjects( controller2 );
+				// console.log('Visibility of group child:', group.children[12].visible); 
 
 				renderer.render( scene, camera );
 
