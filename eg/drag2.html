@@ -254,6 +254,7 @@
 
 				window.addEventListener( 'resize', onWindowResize );
 
+
 			}
 
 			function onWindowResize() {
@@ -279,12 +280,13 @@
 
 
 			        // If the button mesh is pressed
-			        if (intersectedObject === buttonMesh) {
+			        if (object === buttonMesh) {
 			            // Change the button's color
 			            buttonMesh.material.color.set(0x0000ff); // New button color (e.g., blue)
-
+			            // debugger;
 			            // Change the target mesh's color
-			            tofy.material.color.set(0xffff00); // New target color (e.g., yellow)
+			            // group.children[12].material.color.set(0xffff00); // New target color (e.g., yellow)
+			            group.children[12].visible = false; // New target color (e.g., yellow)
 			        } else {
 						object.material.emissive.b = 1;
 						// controller.attach( object );
@@ -351,9 +353,10 @@
 				controller.updateMatrixWorld();
 
 				raycaster.setFromXRController( controller );
-				const childs=group.children
 
-				return raycaster.intersectObjects( childs.push(buttonMesh), false );
+				const objectsToTest = group.children.concat(buttonMesh);
+		
+				return raycaster.intersectObjects( objectsToTest, false );
 
 			}
 
