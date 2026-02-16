@@ -33,9 +33,90 @@
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
+    
+    #controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      max-width: 250px;
+    }
+    
+    .control-group {
+      margin-bottom: 15px;
+    }
+    
+    .control-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    
+    .control-group input[type="range"] {
+      width: 100%;
+    }
+    
+    .control-group .value {
+      font-size: 12px;
+      color: #666;
+    }
+    
+    button.preset {
+      padding: 8px 12px;
+      margin: 5px 5px 5px 0;
+      font-size: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: white;
+      cursor: pointer;
+    }
+    
+    button.preset:active {
+      background: #eee;
+    }
   </style>
 </head>
 <body>
+  
+  <div id="controls">
+    <h3 style="margin-top: 0;">Color Adjustments</h3>
+    
+    <div class="control-group">
+      <label>Exposure: <span class="value" id="exposure-value">1.5</span></label>
+      <input type="range" id="exposure" min="0.5" max="3" step="0.1" value="1.5">
+    </div>
+    
+    <div class="control-group">
+      <label>Brightness: <span class="value" id="brightness-value">1.0</span></label>
+      <input type="range" id="brightness" min="0.5" max="2" step="0.1" value="1.0">
+    </div>
+    
+    <div class="control-group">
+      <label>Contrast: <span class="value" id="contrast-value">1.0</span></label>
+      <input type="range" id="contrast" min="0.5" max="2" step="0.1" value="1.0">
+    </div>
+    
+    <div class="control-group">
+      <label>Saturation: <span class="value" id="saturation-value">1.0</span></label>
+      <input type="range" id="saturation" min="0" max="2" step="0.1" value="1.0">
+    </div>
+    
+    <div class="control-group">
+      <label>Shadow Intensity: <span class="value" id="shadow-value">1.0</span></label>
+      <input type="range" id="shadow" min="0" max="2" step="0.1" value="1.0">
+    </div>
+    
+    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ccc;">
+      <button class="preset" onclick="resetDefaults()">Reset</button>
+      <button class="preset" onclick="applyWarmer()">Warmer</button>
+      <button class="preset" onclick="applyCooler()">Cooler</button>
+      <button class="preset" onclick="applyBrighter()">Brighter</button>
+    </div>
+  </div>
   
   <model-viewer
     id="model"
@@ -45,8 +126,8 @@
     camera-controls
     environment-image="neutral"
     shadow-intensity="1"
-    exposure="0.8"
-    camera-orbit="0deg 75deg 0.5m"
+    exposure="1.5"
+    camera-orbit="0deg 45deg 2.5m"
     min-camera-orbit="auto auto 0.5m"
     max-camera-orbit="auto auto 10m"
     field-of-view="30deg"
@@ -60,6 +141,112 @@
   
   <script>
     const modelViewer = document.querySelector('#model');
+    
+    // Color adjustment values
+    let exposure = 1.5;
+    let brightness = 1.0;
+    let contrast = 1.0;
+    let saturation = 1.0;
+    let shadowIntensity = 1.0;
+    
+    // Update exposure
+    document.getElementById('exposure').addEventListener('input', (e) => {
+      exposure = e.target.value;
+      document.getElementById('exposure-value').textContent = exposure;
+      modelViewer.exposure = exposure;
+    });
+    
+    // Update brightness
+    document.getElementById('brightness').addEventListener('input', (e) => {
+      brightness = e.target.value;
+      document.getElementById('brightness-value').textContent = brightness;
+      applyFilters();
+    });
+    
+    // Update contrast
+    document.getElementById('contrast').addEventListener('input', (e) => {
+      contrast = e.target.value;
+      document.getElementById('contrast-value').textContent = contrast;
+      applyFilters();
+    });
+    
+    // Update saturation
+    document.getElementById('saturation').addEventListener('input', (e) => {
+      saturation = e.target.value;
+      document.getElementById('saturation-value').textContent = saturation;
+      applyFilters();
+    });
+    
+    // Update shadow intensity
+    document.getElementById('shadow').addEventListener('input', (e) => {
+      shadowIntensity = e.target.value;
+      document.getElementById('shadow-value').textContent = shadowIntensity;
+      modelViewer.shadowIntensity = shadowIntensity;
+    });
+    
+    // Apply CSS filters
+    function applyFilters() {
+      modelViewer.style.filter = `brightness(${brightness}) contrast(${contrast}) saturate(${saturation})`;
+    }
+    
+    // Preset functions
+    function resetDefaults() {
+      document.getElementById('exposure').value = 1.5;
+      document.getElementById('brightness').value = 1.0;
+      document.getElementById('contrast').value = 1.0;
+      document.getElementById('saturation').value = 1.0;
+      document.getElementById('shadow').value = 1.0;
+      
+      exposure = 1.5;
+      brightness = 1.0;
+      contrast = 1.0;
+      saturation = 1.0;
+      shadowIntensity = 1.0;
+      
+      modelViewer.exposure = exposure;
+      modelViewer.shadowIntensity = shadowIntensity;
+      applyFilters();
+      
+      updateValueDisplays();
+    }
+    
+    function applyWarmer() {
+      document.getElementById('exposure').value = 1.8;
+      document.getElementById('saturation').value = 1.2;
+      exposure = 1.8;
+      saturation = 1.2;
+      modelViewer.exposure = exposure;
+      applyFilters();
+      updateValueDisplays();
+    }
+    
+    function applyCooler() {
+      document.getElementById('exposure').value = 1.3;
+      document.getElementById('saturation').value = 0.9;
+      exposure = 1.3;
+      saturation = 0.9;
+      modelViewer.exposure = exposure;
+      applyFilters();
+      updateValueDisplays();
+    }
+    
+    function applyBrighter() {
+      document.getElementById('exposure').value = 2.0;
+      document.getElementById('brightness').value = 1.3;
+      exposure = 2.0;
+      brightness = 1.3;
+      modelViewer.exposure = exposure;
+      applyFilters();
+      updateValueDisplays();
+    }
+    
+    function updateValueDisplays() {
+      document.getElementById('exposure-value').textContent = exposure;
+      document.getElementById('brightness-value').textContent = brightness;
+      document.getElementById('contrast-value').textContent = contrast;
+      document.getElementById('saturation-value').textContent = saturation;
+      document.getElementById('shadow-value').textContent = shadowIntensity;
+    }
     
     modelViewer.addEventListener('load', () => {
       console.log('Model loaded successfully with all textures');
