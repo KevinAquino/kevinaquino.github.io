@@ -6,6 +6,14 @@
     <meta name='mobile-web-app-capable' content='yes'>
     <meta name='apple-mobile-web-app-capable' content='yes'>
     <title>Immersive AR Session - THREE.js</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+        }
+      }
+    </script>
     <style>
       body {
         margin: 0;
@@ -37,8 +45,8 @@
     </div>
     
     <script type="module">
-      import * as THREE from 'https://unpkg.com/three@0.158.0/build/three.module.js';
-      import { GLTFLoader } from 'https://unpkg.com/three@0.158.0/examples/jsm/loaders/GLTFLoader.js';
+      import * as THREE from 'three';
+      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
       
       let camera, scene, renderer;
       let controller;
