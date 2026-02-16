@@ -73,7 +73,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       let scene = new Scene();
       let solarSystem = new Gltf2Node({url: 'updated_reno.glb'});
       solarSystem.scale = [1,1,1];
-      solarSystem.translation = [0, -1.5, -2]; // Manual positioning - adjust Y to align floor, Z for distance
+      solarSystem.translation = [0, -1.5, -1.2]; // Manual positioning - adjust Y to align floor, Z for distance
       scene.addNode(solarSystem);
       
       // Still adding a skybox, but only for the benefit of the inline view.
@@ -140,19 +140,19 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         ambientLight.addRenderPrimitive(renderer.createLight({
           type: 'ambient',
           color: [1.0, 1.0, 1.0],
-          intensity: 0.5
+          intensity: 2
         }));
         scene.addNode(ambientLight);
 
-        // Add directional light (like sun)
-        let directionalLight = new Node();
-        directionalLight.addRenderPrimitive(renderer.createLight({
-          type: 'directional',
-          color: [1.0, 1.0, 1.0],
-          intensity: 1.0,
-          direction: [0.5, -1.0, 0.5]
-        }));
-        scene.addNode(directionalLight);
+        // // Add directional light (like sun)
+        // let directionalLight = new Node();
+        // directionalLight.addRenderPrimitive(renderer.createLight({
+        //   type: 'directional',
+        //   color: [1.0, 1.0, 1.0],
+        //   intensity: 1.0,
+        //   direction: [0.5, -1.0, 0.5]
+        // }));
+        // scene.addNode(directionalLight);
       }
 
       function onSessionStarted(session) {
