@@ -3,26 +3,18 @@
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
-    <meta name='mobile-web-app-capable' content='yes'>
-    <meta name='apple-mobile-web-app-capable' content='yes'>
-    <title>Immersive AR Session - THREE.js</title>
+    <title>AR Test - No Model</title>
     <script type="importmap">
       {
         "imports": {
-          "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+          "three": "https://esm.sh/three@0.158.0",
+          "three/addons/": "https://esm.sh/three@0.158.0/examples/jsm/"
         }
       }
     </script>
     <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-        font-family: sans-serif;
-      }
-      canvas {
-        display: block;
-      }
+      body { margin: 0; }
+      canvas { display: block; }
       #info {
         position: absolute;
         top: 10px;
@@ -32,100 +24,68 @@
         background: rgba(0,0,0,0.5);
         padding: 10px;
       }
-      button {
-        padding: 12px 24px;
-        font-size: 16px;
-        cursor: pointer;
-      }
+      button { padding: 12px 24px; font-size: 16px; }
     </style>
   </head>
   <body>
     <div id="info">
       <button id="ar-button">START AR</button>
+      <div id="status">Ready</div>
     </div>
     
     <script type="module">
       import * as THREE from 'three';
-      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
       
       let camera, scene, renderer;
-      let controller;
-      let model;
-      let xrRefSpace;
-      
       const arButton = document.getElementById('ar-button');
+      const status = document.getElementById('status');
       
       init();
       
       function init() {
-        // Create container
-        const container = document.createElement('div');
-        document.body.appendChild(container);
+        status.textContent = 'Initializing...';
         
-        // Create scene
         scene = new THREE.Scene();
-        
-        // Create camera
         camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 20);
         
-        // Add bright ambient light
-        const ambientLight = new THREE.AmbientLight(0xffffff, 2.0);
-        scene.add(ambientLight);
+        // Add a simple test cube instead of loading a model
+        const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        cube.position.set(0, 0, -2);
+        scene.add(cube);
         
-        // Add directional light for better definition
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
-        directionalLight.position.set(1, 2, 1);
-        scene.add(directionalLight);
+        // Lighting
+        const light = new THREE.AmbientLight(0xffffff, 2.0);
+        scene.add(light);
         
-        // Load GLB model
-        const loader = new GLTFLoader();
-        loader.load(
-          './updated_reno.glb',
-          function (gltf) {
-            model = gltf.scene;
-            model.position.set(0, -1.5, -2);
-            model.scale.set(1, 1, 1);
-            scene.add(model);
-            console.log('Model loaded successfully with textures');
-          },
-          function (xhr) {
-            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-          },
-          function (error) {
-            console.error('Error loading model:', error);
-          }
-        );
-        
-        // Create renderer
         renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.xr.enabled = true;
-        container.appendChild(renderer.domElement);
+        document.body.appendChild(renderer.domElement);
         
-        // Handle window resize
-        window.addEventListener('resize', onWindowResize);
+        status.textContent = 'Checking AR support...';
         
-        // Setup AR button
-        arButton.addEventListener('click', onARButtonClick);
-        
-        // Check AR support
         if ('xr' in navigator) {
           navigator.xr.isSessionSupported('immersive-ar').then((supported) => {
             if (supported) {
-              arButton.textContent = 'START AR';
               arButton.disabled = false;
+              status.textContent = 'AR Ready - Click START AR';
             } else {
-              arButton.textContent = 'AR NOT SUPPORTED';
               arButton.disabled = true;
+              status.textContent = 'AR not supported';
             }
+          }).catch(err => {
+            status.textContent = 'Error: ' + err.message;
           });
         } else {
-          arButton.textContent = 'WebXR NOT AVAILABLE';
           arButton.disabled = true;
+          status.textContent = 'WebXR not available';
         }
         
-        // Start render loop
+        arButton.addEventListener('click', onARButtonClick);
+        window.addEventListener('resize', onWindowResize);
         renderer.setAnimationLoop(render);
       }
       
@@ -139,36 +99,30 @@
         if (renderer.xr.isPresenting) {
           renderer.xr.getSession().end();
         } else {
+          status.textContent = 'Starting AR...';
           navigator.xr.requestSession('immersive-ar', {
             optionalFeatures: ['dom-overlay'],
             domOverlay: { root: document.body }
-          }).then(onSessionStarted);
+          }).then(onSessionStarted).catch(err => {
+            status.textContent = 'AR Error: ' + err.message;
+          });
         }
       }
       
       function onSessionStarted(session) {
         session.addEventListener('end', onSessionEnded);
-        
         renderer.xr.setSession(session);
         arButton.textContent = 'EXIT AR';
-        
-        session.requestReferenceSpace('local').then((refSpace) => {
-          xrRefSpace = refSpace;
-        });
+        status.textContent = 'AR Active';
       }
       
       function onSessionEnded() {
         arButton.textContent = 'START AR';
+        status.textContent = 'AR Ended';
       }
       
-      function render(timestamp, frame) {
-        if (frame) {
-          // In AR mode
-          renderer.render(scene, camera);
-        } else {
-          // In inline mode (before AR starts)
-          renderer.render(scene, camera);
-        }
+      function render() {
+        renderer.render(scene, camera);
       }
     </script>
   </body>
