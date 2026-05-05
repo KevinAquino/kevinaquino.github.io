@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Full-body anatomy</title>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+  html, body { margin: 0; height: 100%; font-family: system-ui, -apple-system, sans-serif; }
+  body { display: grid; grid-template-columns: 1fr 240px; height: 100vh; }
+  @media (max-width: 720px) {
+    body { grid-template-columns: 1fr; grid-template-rows: 1fr 40vh; }
+  }
+  model-viewer { width: 100%; height: 100%; background: #1a1a1a; }
+  #panel { padding: 16px; overflow-y: auto; background: #f5f5f5; border-left: 1px solid #ddd; }
+  #panel h2 { font-size: 12px; margin: 0 0 12px; color: #666; text-transform: uppercase; letter-spacing: 1.2px; }
+  button.cat { display: block; width: 100%; margin: 4px 0; padding: 10px 12px; border: 0;
+               border-radius: 6px; cursor: pointer; font-size: 13px; text-align: left;
+               background: #ddd; color: #333; transition: background 0.1s, color 0.1s; }
+  button.cat.on { background: #2e7d32; color: white; }
+  button.cat:hover { filter: brightness(1.05); }
+  #footer { margin-top: 16px; font-size: 11px; color: #888; }
+  #footer button { background: none; border: 1px solid #ccc; padding: 6px 10px; cursor: pointer;
+                   border-radius: 4px; margin-right: 6px; }
+  #ar-hint { display: none; margin: 0 0 12px; padding: 10px 12px; border-radius: 6px;
+             background: #e3f2fd; border: 1px solid #90caf9; color: #0d47a1; font-size: 12px;
+             line-height: 1.4; }
+  #ar-hint.visible { display: block; }
+  #ar-hint b { display: block; margin-bottom: 2px; }
+</style>
+</head>
+<body>
+<model-viewer id="mv"
+              src="fb.glb"
+              camera-controls touch-action="pan-y"
+              ar ar-modes="webxr scene-viewer quick-look"
+              shadow-intensity="1"
+              exposure="1.0">
+</model-viewer>
+<div id="panel">
+  <h2>Anatomy</h2>
+  <div id="ar-hint">
+    <b>AR available on this device</b>
+    Toggle the systems you want to see, then tap the AR button on the viewer.
+    The state at launch is what you'll see in AR — toggles don't update once
+    inside the AR session.
+  </div>
+  <div id="buttons"></div>
+  <div id="footer">
+    <button id="all-on">All on</button>
+    <button id="all-off">All off</button>
+  </div>
+</div>
+<script>
+const CATEGORY_MEMBERS = {
+  "GI": [
+    "GI__Stomach",
+    "GI__Gallbladder",
+    "GI__Liver",
+    "GI__Pancreas",
+    "GI__Duodenum",
+    "GI__Colon",
+    "GI__Urinary_Bladder",
+    "GI__Kidney_Left",
+    "GI__Kidney_Right",
+    "GI__Intestine_General",
+    "GI__Small_Intestine"
+  ],
+  "General": [
+    "General__Muscles_General",
+    "General__Subcutaneous_Fat",
+    "General__Visceral_Fat"
+  ],
+  "Head_Spine": [
+    "Head_Spine__Brain",
+    "Head_Spine__Vertebrae",
+    "Head_Spine__Intervertebral_Discs",
+    "Head_Spine__Spinal_Brain"
+  ],
+  "Heart": [
+    "Heart__Heart",
+    "Heart__Aorta",
+    "Heart__Inferior_Vena_Cava",
+    "Heart__Portal_Vein_and_splenic_vein",
+    "Heart__Iliac_Artery_Left",
+    "Heart__Iliac_Artery_Right",
+    "Heart__Iliac_Vena_Left",
+    "Heart__Iliac_Vena_Right",
+    "Heart__Pulmonary_Vein",
+    "Heart__Brachiocephalic_Trunk",
+    "Heart__Superior_Vena_Cava",
+    "Heart__Subclavian_Artery_Right",
+    "Heart__Subclavian_Artery_Left",
+    "Heart__Common_Carotid_Artery_Right",
+    "Heart__Common_Carotid_Artery_Left",
+    "Heart__Brachiocephalic_Vein_Left",
+    "Heart__Brachiocephalic_Vein_Right",
+    "Heart__Atrial_Appendage_Left"
+  ],
+  "Lung": [
+    "Lung__Esophagus",
+    "Lung__Trachea",
+    "Lung__Lung_Upper_Lobe_Left",
+    "Lung__Lung_Lower_Lobe_Left",
+    "Lung__Lung_Upper_Lobe_Right",
+    "Lung__Lung_Middle_Lobe_Right",
+    "Lung__Lung_Lower_Lobe_Right"
+  ],
+  "Lymphatic_Endochrine": [
+    "Lymphatic_Endochrine__Spleen",
+    "Lymphatic_Endochrine__Adrenal_Gland_Right",
+    "Lymphatic_Endochrine__Adrenal_Gland_Left",
+    "Lymphatic_Endochrine__Thyroid_Gland"
+  ],
+  "Muscles_Glutes": [
+    "Muscles_Glutes__Gluteus_Max_Left",
+    "Muscles_Glutes__Gluteus_Med_Left",
+    "Muscles_Glutes__Gluteus_Min_Left",
+    "Muscles_Glutes__Gluteus_Max_Right",
+    "Muscles_Glutes__Gluteus_Med_Right",
+    "Muscles_Glutes__Gluteus_Min_Right",
+    "Muscles_Glutes__tensor_fascia_left",
+    "Muscles_Glutes__tensor_fascia_right"
+  ],
+  "Muscles_Leg_Thigh": [
+    "Muscles_Leg_Thigh__Sartorius_Left",
+    "Muscles_Leg_Thigh__Sartorius_Right",
+    "Muscles_Leg_Thigh__Adductor_Magnus_Left",
+    "Muscles_Leg_Thigh__Adductor_Longus_Left",
+    "Muscles_Leg_Thigh__Adductor_Brevis_Left",
+    "Muscles_Leg_Thigh__Gracilis_Left",
+    "Muscles_Leg_Thigh__Semitendinosus_left",
+    "Muscles_Leg_Thigh__Semimembranosus_left",
+    "Muscles_Leg_Thigh__Adductor_Magnus_Right",
+    "Muscles_Leg_Thigh__Adductor_Longus_Right",
+    "Muscles_Leg_Thigh__Adductor_Brevis_Right",
+    "Muscles_Leg_Thigh__Gracilis_Right",
+    "Muscles_Leg_Thigh__Semitendinosus_right",
+    "Muscles_Leg_Thigh__Semimembranosus_right",
+    "Muscles_Leg_Thigh__Vastus_lateralis_left",
+    "Muscles_Leg_Thigh__Vastus_lateralis_right",
+    "Muscles_Leg_Thigh__Vastus_intermedius_left",
+    "Muscles_Leg_Thigh__Vastus_intermedius_right",
+    "Muscles_Leg_Thigh__Vastus_medialis_left",
+    "Muscles_Leg_Thigh__Vastus_medialis_right",
+    "Muscles_Leg_Thigh__Rectus_femoris_left",
+    "Muscles_Leg_Thigh__Rectus_femoris_right",
+    "Muscles_Leg_Thigh__Biceps_femoris_long_head_left",
+    "Muscles_Leg_Thigh__Biceps_femoris_long_head_right",
+    "Muscles_Leg_Thigh__Biceps_femoris_short_head_left",
+    "Muscles_Leg_Thigh__Biceps_femoris_short_head_right"
+  ],
+  "Muscles_shoulder": [
+    "Muscles_shoulder__the_deltoid_right",
+    "Muscles_shoulder__teres_major_right",
+    "Muscles_shoulder__the_four_rotator_cuff_muscles_right",
+    "Muscles_shoulder__the_deltoid_left",
+    "Muscles_shoulder__teres_major_left",
+    "Muscles_shoulder__the_four_rotator_cuff_muscles_left"
+  ],
+  "Muscles_trunk": [
+    "Muscles_trunk__Trapezius_left",
+    "Muscles_trunk__Latissimus_Dorsi_left",
+    "Muscles_trunk__Rhomboids_major_left",
+    "Muscles_trunk__Erector_spinae_left",
+    "Muscles_trunk__Trapezius_right",
+    "Muscles_trunk__Latissimus_Dorsi_right",
+    "Muscles_trunk__Rhomboids_major_right",
+    "Muscles_trunk__Erector_spinae_right",
+    "Muscles_trunk__External_Oblique_left",
+    "Muscles_trunk__Rectus_Abdominis_left",
+    "Muscles_trunk__Pyramidalis_left",
+    "Muscles_trunk__the_iliacus_left",
+    "Muscles_trunk__psoas_major_left",
+    "Muscles_trunk__psoas_minor_left",
+    "Muscles_trunk__quadratus_lumborum_left",
+    "Muscles_trunk__External_Oblique_right",
+    "Muscles_trunk__Rectus_Abdominis_right",
+    "Muscles_trunk__Pyramidalis_right",
+    "Muscles_trunk__the_iliacus_right",
+    "Muscles_trunk__psoas_major_right",
+    "Muscles_trunk__psoas_minor_right",
+    "Muscles_trunk__quadratus_lumborum_right",
+    "Muscles_trunk__Pectoralis_Major_right",
+    "Muscles_trunk__Pectoralis_minor_right",
+    "Muscles_trunk__Pectoralis_Major_left",
+    "Muscles_trunk__Pectoralis_minor_left"
+  ],
+  "Skeleton": [
+    "Skeleton__Humerus_Left",
+    "Skeleton__Humerus_Right",
+    "Skeleton__Sacrum",
+    "Skeleton__Femur_Left",
+    "Skeleton__Hip_Left",
+    "Skeleton__Femur_Right",
+    "Skeleton__Hip_Right",
+    "Skeleton__Scapula_Left",
+    "Skeleton__Scapula_Right",
+    "Skeleton__Clavicle_Left",
+    "Skeleton__Clavicle_Right",
+    "Skeleton__Sternum",
+    "Skeleton__Costal_Cartilages",
+    "Skeleton__Vertebra_Posterior_Elements",
+    "Skeleton__Spinal_Canal"
+  ]
+};
+const mv = document.getElementById('mv');
+const buttonsEl = document.getElementById('buttons');
+const state = {};
+const originalAlpha = {};
+
+function setMaterialVisible(matName, on) {
+  const m = mv.model.getMaterialByName(matName);
+  if (!m) return;
+  const orig = originalAlpha[matName];
+  const c = m.pbrMetallicRoughness.baseColorFactor;
+  if (on) {
+    m.pbrMetallicRoughness.setBaseColorFactor([c[0], c[1], c[2], orig]);
+    m.setAlphaMode(orig < 1 ? 'BLEND' : 'OPAQUE');
+  } else {
+    m.pbrMetallicRoughness.setBaseColorFactor([c[0], c[1], c[2], 0]);
+    m.setAlphaMode('MASK');
+    m.setAlphaCutoff(0.5);
+  }
+}
+
+function applyCategory(cat, on) {
+  state[cat] = on;
+  for (const matName of CATEGORY_MEMBERS[cat]) {
+    setMaterialVisible(matName, on);
+  }
+  const btn = document.querySelector(`button[data-cat="${cat}"]`);
+  if (btn) btn.classList.toggle('on', on);
+}
+
+mv.addEventListener('load', () => {
+  for (const m of mv.model.materials) {
+    originalAlpha[m.name] = m.pbrMetallicRoughness.baseColorFactor[3];
+  }
+  for (const cat of Object.keys(CATEGORY_MEMBERS)) {
+    applyCategory(cat, false);
+  }
+  if (mv.canActivateAR) {
+    document.getElementById('ar-hint').classList.add('visible');
+  }
+});
+
+for (const cat of Object.keys(CATEGORY_MEMBERS)) {
+  const btn = document.createElement('button');
+  btn.className = 'cat';
+  btn.dataset.cat = cat;
+  btn.textContent = cat.replace(/_/g, ' ');
+  state[cat] = false;
+  btn.onclick = () => applyCategory(cat, !state[cat]);
+  buttonsEl.appendChild(btn);
+}
+
+document.getElementById('all-on').onclick = () => {
+  for (const cat of Object.keys(CATEGORY_MEMBERS)) applyCategory(cat, true);
+};
+document.getElementById('all-off').onclick = () => {
+  for (const cat of Object.keys(CATEGORY_MEMBERS)) applyCategory(cat, false);
+};
+</script>
+</body>
+</html>
